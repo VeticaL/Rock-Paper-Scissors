@@ -8,7 +8,7 @@ function getComputerChoice(){
     } else {
         output = "Scissors";
     }
-    return output  
+    return output
 }
 
 function playRound(playerSelection,computerSelection){
@@ -34,10 +34,19 @@ function playRound(playerSelection,computerSelection){
 
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound()
-    }
-}
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
 
-game()
+rock.addEventListener("click", () => {
+    playRound();
+});
+
+paper.addEventListener("click", () => {
+    playRound();
+});
+
+scissors.addEventListener("click", () => {
+    playRound();
+});
+

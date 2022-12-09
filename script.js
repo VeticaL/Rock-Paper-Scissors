@@ -1,43 +1,69 @@
+let playerScore = 0;
+let computerScore = 0;
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
 function getComputerChoice(){
-    let random = Math.floor(Math.random()*10);
-    let output;
-    if (random <= 4) {
-        output = "Rock";
-    } else if (random >= 7) {
-        output = "Paper";
-    } else {
-        output = "Scissors";
+    let ComputerChoice = getRandomInt(3);
+    switch(ComputerChoice) {
+        case 0 :
+            return "Rock";
+            case 1 :
+                return "Paper";
+            case 2 :
+                return "Scissors";
     }
-    return output  
 }
 
 function playRound(playerSelection,computerSelection){
-    playerSelection = prompt("Rock-Paper-Scissors").toLowerCase();
-    computerSelection = getComputerChoice();
-    if(playerSelection === "rock" & computerSelection === "Scissors") {
-        console.log("You Win! Rock Beats Scissors");
-    } else if (playerSelection === "paper" & computerSelection === "Rock") {
-        console.log("You Win! Paper Beats Rock");
-    } else if (playerSelection === "scissors" & computerSelection === "Paper") {
-        console.log("You Win! Scissors Beats Paper");
-    } else if (playerSelection === "paper" & computerSelection === "Scissors") {
-        console.log("You Lose! Scissors Beats Paper");
-    } else if (playerSelection === "scissors" & computerSelection === "Rock") {
-        console.log("You Win! Rock Beats Scissors");
-    } else if (playerSelection === "rock" & computerSelection === "Paper") {
-        console.log("You Win! Paper Beats Rock");
-    } else if (playerSelection === computerSelection.toLowerCase()) {
-        console.log("Tie!");
-    } else {
-        console.log("You have entered the wrong input");
+    switch(playerSelection) {
+        case "Rock" :
+            if (computerSelection === "Rock") {
+                document.getElementById("result").innerHTML = "Draw! Try Again"
+            } else if (computerSelection === "Paper") {
+                document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"
+                computerScore++;
+            } else if (computerSelection === "Scissor") {
+                document.getElementById("result").innerHTML = "You Win! Rock beats Scissor" 
+                playerScore++;
+            }
+            break;
+            case "Paper" :
+                if (computerSelection === "Rock") {
+                    document.getElementById("result").innerHTML = "You Win! Paper beats Rock"
+                } else if (computerSelection === "Paper") {
+                    document.getElementById("result").innerHTML = "Draw! Try Again"
+                    playerScore++;
+                } else if (computerSelection === "Scissor") {
+                    document.getElementById("result").innerHTML = "You Lose! Scissor beats Paper" 
+                    computerScore++;
+                }
+                break;
+                case "Scissors" :
+                    if (computerSelection === "Rock") {
+                        document.getElementById("result").innerHTML = "You Lose! Rock beats Scissors"
+                        computerScore++;
+                    } else if (computerSelection === "Paper") {
+                        document.getElementById("result").innerHTML = "You Win! Scissor beats Paper"
+                        playerScore++;
+                    } else if (computerSelection === "Scissor") {
+                        document.getElementById("result").innerHTML = "Draw! Try Again" 
+                    } 
+                    break;
+
     }
+    document.getElementById("playerScore").innerHTML = `Player : ${playerScore}`;
+    document.getElementById("computerScore").innerHTML = `Computer : ${computerScore}`;
 
-}
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound()
+        if (playerScore === 5) {
+            document.getElementById("endresult").innerHTML = `You Won! by ${playerScore} to ${computerScore}`;
+            playerScore = 0;
+            computerScore = 0;
+        } else if (computerScore === 5) {
+            document.getElementById("endresult").innerHTML = `You Lost! by ${playerScore} to ${computerScore}`;
+            playerScore = 0;
+            computerScore = 0;
+        }
     }
-}
-
-game()

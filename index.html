@@ -12,13 +12,15 @@
     <hr>
     <p>Play against the computer. First to 5 wins.</p>
     <div class="btn">
-        <button id="rock">✊</button>
-        <button id="paper">✋</button>
-        <button id="scissors">✌️</button>
+        <button id="rock" onclick="playRound('Rock', getComputerChoice())" >✊</button>
+        <button id="paper" onclick="playRound('Paper', getComputerChoice())" >✋</button>
+        <button id="scissors" onclick="playRound('Scissors', getComputerChoice())" >✌️</button>
     </div>
     
-    <div class="score"><p>Player:  Computer: </p></div>
-    <div class="result"> <h2>You Won!</h2></div>
+    <h2 id="playerScore">Player : 0</h2>
+    <h2 id="computerScore">Computer : 0</h2>
+    <h2 id="result">Click to Play!</h2>
+    <h2 id="endresult"></h2>
 
     <script src="script.js"></script>
 </body>

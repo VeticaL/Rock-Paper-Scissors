@@ -6,6 +6,7 @@ h1,h2,p {
     text-align: center;
     color: rgb(27, 27, 27);
     font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 hr {
@@ -17,6 +18,7 @@ hr {
     display: flex;
     justify-content: center;
     margin: 100px;
+    
 }
 
 #rock {
@@ -55,6 +57,12 @@ hr {
     border: none;
 }
 
-.score {
-    
+#rock:hover, #paper:hover, #scissors:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#endresult {
+    font-size: 3em;
+    color:gold;
 }
